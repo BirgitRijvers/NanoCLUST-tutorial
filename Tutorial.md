@@ -266,6 +266,6 @@ A list of all NanoCLUST parameters you can adjust:
 --- 
 
 # Wrap up
-Congratulations, you've reached the end of the tutorial! By now, you've successfully installed NanoCLUST, are able to prepare your data and execute the pipeline. To explore the diverse outputs generated, refer to the [GitHub page of NanoCLUST](https://github.com/genomicsITER/NanoCLUST). 
+Congratulations, you've reached the end of the tutorial! By now, you've successfully installed NanoCLUST, are able to prepare your data and execute the pipeline. To explore the diverse outputs generated, againrefer to the [GitHub page of NanoCLUST](https://github.com/genomicsITER/NanoCLUST). 
 
-I hope NanoCLUST comes in usefull for your projects, and that you feel more confident navigating the command line!
+I hope NanoCLUST comes in usefull for your projects, and that you feel more confident navigating the command line 😄!
