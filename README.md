@@ -17,3 +17,6 @@ For more information check out the [GitHub page of NanoCLUST](https://github.com
 
 ## The tutorial
 Please click on [this link](https://github.com/BirgitRijvers/NanoCLUST-tutorial/blob/main/Tutorial.md) for the actual tutorial. 
+
+## Tips 
+For a more in dept understanding of the installation process, commands and the terminal, please refer to [this file](https://github.com/BirgitRijvers/NanoCLUST-tutorial/blob/main/Terminal%20tips.md).
