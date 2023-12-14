@@ -2,7 +2,7 @@
 Please make sure the soon to be users of NanoCLUST are added to the dockergroup on the server. This can be done by adding `docker` to the groups parameter when creating accounts, or by running `sudo usermod -aG docker $USER`. 
 
 ---
-# [Introduction](#Introduction)
+# Introduction
 Hi, and welcome to this beginner-friendly tutorial on installing and running NanoCLUST :). 
 
 After completing this tutorial you know how to:
@@ -179,7 +179,7 @@ Remember to specify the correct location and assign a name for each merged file 
 
 # Running NanoCLUST
 
-Alright, it's finally time to fire up NanoCLUST and process our concatenated sequence data! The way NanoCLUST operates depends on specific parameters you can set within the command when running it. But it is always necessary to make sure you're in the right environment (`env_nf`). If you need a refresh on how to do this, refer back to the [Testing](https://github.com/BirgitRijvers/NanoCLUST-tutorial/blob/main/Tutorial.md#testing) section of this tutorial.
+Alright, it's finally time to fire up NanoCLUST and process our concatenated sequence data! The way NanoCLUST operates depends on specific parameters you can set within the command when running it. But it is always necessary to make sure you're in the right environment (`env_nf`). If you need a refresh on how to do this, refer back to the [testing](https://github.com/BirgitRijvers/NanoCLUST-tutorial/blob/main/Tutorial.md#testing) section of this tutorial.
 
 ## Default
 To initiate NanoCLUST with default settings, this is the general form of the command:
@@ -217,7 +217,7 @@ This command executes NanoCLUST using the specified paths for the relevant files
 
 ## Changing the settings
 
-NanoCLUST offers various parameters that you can tweak to alter the output according to your specific requirements. If you want to see all possibilities, check the [list of customizable parameters](https://github.com/BirgitRijvers/NanoCLUST-tutorial/blob/main/Tutorial.md#parameters) in this tutorial. For a detailed explanation, refer to the [NanoCLUST documentation](https://github.com/genomicsITER/NanoCLUST/blob/master/docs/2usage.md).
+NanoCLUST offers various parameters that you can tweak to alter the output according to your specific requirements. If you want to see all possibilities, check the [list of customizable parameters](https://github.com/BirgitRijvers/NanoCLUST-tutorial/blob/main/Tutorial.md#parameters-overview) in this tutorial. For a detailed explanation, refer to the [NanoCLUST documentation](https://github.com/genomicsITER/NanoCLUST/blob/master/docs/2usage.md).
 
 The required parameters are `-profile`, `--reads`, `--db`, and `--tax`. Other parameters come with default values that are utilized if not explicitly set in the command. To modify these parameters, check the NanoCLUST documentation first. Once you've decided on the changes, simply add the desired parameter to the command.
 
@@ -232,7 +232,7 @@ nextflow run programs/NanoCLUST/main.nf \
              --min_read_length 800
 ```
 
-### Parameters Overview:
+### Parameters overview:
 
 A list of all NanoCLUST parameters you can adjust:
 
