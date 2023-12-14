@@ -17,7 +17,7 @@ So, the path guides you through folders, helping you find your files easily.
 
 ---
 
-## Basic Commands
+## Basic commands
 
 ### `cd` command
 
@@ -84,7 +84,7 @@ For example, to copy a file named `example.txt` to a directory named `backup`, y
 cp example.txt backup
 ```
 
-#### Copying Directories:
+#### Copying directories:
 
 To copy an entire directory along with its contents, utilize the `-r` flag (recursive option) with the `cp` command:
 
