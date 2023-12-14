@@ -16,4 +16,4 @@ After completing this tutorial you know how to:
 For more information check out the [GitHub page of NanoCLUST](https://github.com/genomicsITER/NanoCLUST).
 
 ## The tutorial
-Please click on [this link](https://github.com/BirgitRijvers/NanoCLUST-tutorial/main/Tutorial.md) for the actual tutorial. 
+Please click on [this link](https://github.com/BirgitRijvers/NanoCLUST-tutorial/blob/main/Tutorial.md) for the actual tutorial. 
