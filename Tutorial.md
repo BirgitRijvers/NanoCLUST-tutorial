@@ -51,11 +51,9 @@ mkdir -p miniconda3
 Next, download the Miniconda installer and start the installation:
 
 ```bash
-wget [https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh) -O miniconda3/miniconda.sh
-
-bash miniconda3/miniconda.sh -b -u -p miniconda3
-
-rm -rf miniconda3/miniconda.sh
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
 ```
 
 Now we only need to initialize miniconda by running these commands:
