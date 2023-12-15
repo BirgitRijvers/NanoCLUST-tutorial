@@ -37,7 +37,7 @@ First, we need to create a directory where Miniconda will be installed. It's rec
 mkdir ~/programs
 ```
 
-Navigate to the programs directory. Replace 'programs' with the name of your chosen directory:
+Navigate to the programs directory using this command:
 ```bash
 cd ~/programs
 ```
