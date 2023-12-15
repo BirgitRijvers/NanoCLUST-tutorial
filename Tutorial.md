@@ -33,6 +33,8 @@ Miniconda, a lighter version of Conda, is less complex to install and works perf
 
 First, we need to create a directory where Miniconda will be installed. It's recommended to locate or create a folder within your home directory for programs. If such a folder doesn't exist, you can create it using this command:
 
+**Tip:** Simply copy the command provided below and paste it into the terminal using your right mouse button. Note that 'CTRL + C/V' does not function within the terminal interface!
+
 ```bash
 mkdir ~/programs
 ```
@@ -50,10 +52,19 @@ mkdir -p miniconda3
 
 Next, download the Miniconda installer and start the installation:
 
+**Tip:** When pasting multiple lines at once into the terminal, note that the final line won't execute automatically. You'll need to press 'Enter' for the execution to proceed!
+
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda3/miniconda.sh
 bash miniconda3/miniconda.sh -b -u -p miniconda3
 rm -rf miniconda3/miniconda.sh
+```
+
+After executing the previous commands; you need to close the terminal and re-open it. This means you have to login again! 
+And again, we have to navigate to the right location using: 
+
+```bash
+cd programs
 ```
 
 Now we only need to initialize miniconda by running these commands:
@@ -76,9 +87,14 @@ Nextflow is the programming language in which NanoCLUST is written. It's designe
 Conda works with environments, allowing the installation of various programs in each environment created. For now, we only require Nextflow, so let's create an environment containing Nextflow. We'll use an older version because NanoCLUST isn't compatible with the newest versions.
 
 ```bash
-# Newer versions are not compatible with NanoCLUST
 conda create --name env_nf nextflow=22.10.6
+```
 
+When a question pops up ('Proceed ([y]/n)?'): Use the 'y' key on your keyboard to proceed.
+
+To activate the environment; run:
+
+```bash
 conda activate env_nf
 ```
 ---
