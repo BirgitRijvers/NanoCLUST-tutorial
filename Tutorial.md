@@ -235,14 +235,17 @@ NanoCLUST offers various parameters that you can tweak to alter the output accor
 
 The required parameters are `-profile`, `--reads`, `--db`, and `--tax`. Other parameters come with default values that are utilized if not explicitly set in the command. To modify these parameters, check the NanoCLUST documentation first. Once you've decided on the changes, simply add the desired parameter to the command.
 
+**Tip:** Use the absolute file paths to for the database locations, this prevents the pipeline from crashing!
+Check the [Terminal tips file]() in this repository for more information about absolute and relative paths. 
+
 For instance, let's say you wish to retain NanoCLUST's default settings but adjust the minimum read length required. Here's how you can do it:
 
 ```bash
 nextflow run programs/NanoCLUST/main.nf \ 
              -profile docker \ 
              --reads sequencedata/concatenated_sequencedata/barcode1.fastq \ 
-             --db programs/NanoCLUST/db/16S_ribosomal_RNA \ 
-             --tax programs/NanoCLUST/db/taxdb \
+             --db /user/programs/NanoCLUST/db/16S_ribosomal_RNA \ 
+             --tax /user/programs/NanoCLUST/db/taxdb \
              --min_read_length 800
 ```
 
