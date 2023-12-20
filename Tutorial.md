@@ -60,6 +60,7 @@ bash miniconda3/miniconda.sh -b -u -p miniconda3
 rm -rf miniconda3/miniconda.sh
 ```
 
+You will see some status information about the commands in your terminal, including progress bars. Just wait untill everything is finished, this should not take more than a few minutes.
 After executing the previous commands; you need to close the terminal and re-open it. This means you have to login again! 
 And again, we have to navigate to the right location using: 
 
@@ -90,7 +91,20 @@ Conda works with environments, allowing the installation of various programs in 
 conda create --name env_nf nextflow=22.10.6
 ```
 
-When a question pops up ('Proceed ([y]/n)?'): Use the 'y' key on your keyboard to proceed.
+This command can take some time to complete as well, you'll see a turning / to indicate that things are happening.
+
+When a question pops up ('Proceed ([y]/n)?'): Use the 'y' key on your keyboard to proceed. Just wait untill you see this message:
+
+```bash
+#
+# To activate this environment, use
+#
+#     $ conda activate env_nf
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+```
 
 To activate the environment; run:
 
@@ -127,6 +141,7 @@ Download the first database using the following command:
 ```bash
 wget https://ftp.ncbi.nlm.nih.gov/blast/db/16S_ribosomal_RNA.tar.gz && tar -xzvf 16S_ribosomal_RNA.tar.gz
 ```
+Wait untill the progress is completed!
 
 NanoCLUST also requires a database containing taxonomic names for each of the numerical taxids it identifies. Create a new location for this database within the `db` directory, change your location to it, and download the database:
 
@@ -135,6 +150,7 @@ mkdir taxdb
 cd taxdb
 wget https://ftp.ncbi.nlm.nih.gov/blast/db/taxdb.tar.gz && tar -xzvf taxdb.tar.gz
 ```
+Wait untill the progress is completed!
 
 These commands will download and extract the necessary databases required by NanoCLUST.
 
