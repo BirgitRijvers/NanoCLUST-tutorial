@@ -15,6 +15,19 @@ Imagine your files are in folders. The address to a file is written like this: `
 
 So, the path guides you through folders, helping you find your files easily.
 
+### Absolute paths
+Absolute paths in the terminal denote the complete file location starting from the system's root directory. 
+They are like GPS coordinates for your files, indicating the full pathway regardless of your current location within the file system.
+They always begin with a forward slash /, denoting the root directory. 
+
+For example `/home/username/documents` points directly to the 'documents' folder within the 'username' directory, irrespective of the current location.
+
+### Relative paths
+Unlike absolute paths, relative paths specify file locations concerning your current directory within the system. 
+They're like giving directions based on where you're standing, navigating through folders relative to your present location.
+
+For example `/programs` refers to the 'programs' folder located in the directory one level below the current location and `../documents` refers to the 'documents' folder located in the directory one level up from the current location.
+
 ---
 
 ## Basic commands
