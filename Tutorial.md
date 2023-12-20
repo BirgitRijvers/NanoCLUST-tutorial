@@ -214,8 +214,8 @@ Here's how the paths would look:
 
 - `{main.nf}`: `programs/NanoCLUST/main.nf`
 - `{'sample.fastq'}`: `sequencedata/concatenated_sequencedata/barcode1.fastq`
-- `{"db/16S_ribosomal_RNA"}`: `programs/NanoCLUST/db/16S_ribosomal_RNA`
-- `{"db/taxdb/"}`: `programs/NanoCLUST/db/taxdb`
+- `{"db/16S_ribosomal_RNA"}`: `/user/programs/NanoCLUST/db/16S_ribosomal_RNA`
+- `{"db/taxdb/"}`: `/user/programs/NanoCLUST/db/taxdb`
 
 To run NanoCLUST based on this setup, the command would be:
 
@@ -236,7 +236,7 @@ NanoCLUST offers various parameters that you can tweak to alter the output accor
 The required parameters are `-profile`, `--reads`, `--db`, and `--tax`. Other parameters come with default values that are utilized if not explicitly set in the command. To modify these parameters, check the NanoCLUST documentation first. Once you've decided on the changes, simply add the desired parameter to the command.
 
 **Tip:** Use the absolute file paths to for the database locations, this prevents the pipeline from crashing!
-Check the [Terminal tips file]() in this repository for more information about absolute and relative paths. 
+Check the [Terminal tips file](https://github.com/BirgitRijvers/NanoCLUST-tutorial/blob/main/Terminal%20tips.md) in this repository for more information about absolute and relative paths. 
 
 For instance, let's say you wish to retain NanoCLUST's default settings but adjust the minimum read length required. Here's how you can do it:
 
