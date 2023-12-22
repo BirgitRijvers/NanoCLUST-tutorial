@@ -195,21 +195,9 @@ If you encounter this message, your test was successful! Congratulations, NanoCL
 
 ---
 
-# Preparing Your Sequenced Data
-Before diving into NanoCLUST processing for your own sequenced data, let's set the stage! After Nanopore sequencing, your data appears in compressed directories marked with the '.tar.gz' extension. However, NanoCLUST needs files in the '.fastq' format.
-To get your data NanoCLUST-ready, you'll need to merge these files. First, locate your sequence data folder. Then, use this command:
-
-```bash
-zcat {location} > {new_file_name}.fastq
-```
-
-Remember to specify the correct location and assign a name for each merged file based on its directory.
-
----
-
 # Running NanoCLUST
 
-Alright, it's finally time to fire up NanoCLUST and process our concatenated sequence data! The way NanoCLUST operates depends on specific parameters you can set within the command when running it. But it is always necessary to make sure you're in the right environment (`env_nf`). If you need a refresh on how to do this, refer back to the [testing](https://github.com/BirgitRijvers/NanoCLUST-tutorial/blob/main/Tutorial.md#testing) section of this tutorial.
+Alright, it's finally time to let NanoCLUST do it's thing and process our sequence data! The way NanoCLUST operates depends on specific parameters you can set within the command when running it. But it is always necessary to make sure you're in the right environment (`env_nf`). If you need a refresh on how to do this, refer back to the [testing](https://github.com/BirgitRijvers/NanoCLUST-tutorial/blob/main/Tutorial.md#testing) section of this tutorial.
 
 ## Default
 To initiate NanoCLUST with default settings, this is the general form of the command:
@@ -217,19 +205,19 @@ To initiate NanoCLUST with default settings, this is the general form of the com
 ```bash
 nextflow run {main.nf} \ 
              -profile docker \ 
-             --reads {'sample.fastq'} \ 
+             --reads {'sample.fastq.gz'} \ 
              --db {"db/16S_ribosomal_RNA"} \ 
              --tax {"db/taxdb/"}
 ```
 
 Simply replace the placeholders within curly brackets with the appropriate file locations. Let's break it down using an example:
 
-Let's say you're in the home directory. Inside, there's a folder named `sequencedata`, housing another folder named `concatenated_sequencedata`, containing the desired `.fastq` file. Also, there's a folder called `programs` where NanoCLUST is installed. The NanoCLUST directory hosts the `main.nf` file and the database directories.
+Let's say you're in the home directory. Inside, there's a folder named `sequencedata`, housing another folder named `concatenated_sequencedata`, containing the desired `.fastq.gz` file. Also, there's a folder called `programs` where NanoCLUST is installed. The NanoCLUST directory hosts the `main.nf` file and the database directories.
 
 Here's how the paths would look:
 
 - `{main.nf}`: `programs/NanoCLUST/main.nf`
-- `{'sample.fastq'}`: `sequencedata/concatenated_sequencedata/barcode1.fastq`
+- `{'sample.fastq'}`: `sequencedata/concatenated_sequencedata/barcode1.fastq.gz`
 - `{"db/16S_ribosomal_RNA"}`: `/user/programs/NanoCLUST/db/16S_ribosomal_RNA`
 - `{"db/taxdb/"}`: `/user/programs/NanoCLUST/db/taxdb`
 
@@ -238,7 +226,7 @@ To run NanoCLUST based on this setup, the command would be:
 ```bash
 nextflow run programs/NanoCLUST/main.nf \ 
              -profile docker \ 
-             --reads sequencedata/concatenated_sequencedata/barcode1.fastq \ 
+             --reads sequencedata/concatenated_sequencedata/barcode1.fastq.gz \ 
              --db programs/NanoCLUST/db/16S_ribosomal_RNA \ 
              --tax programs/NanoCLUST/db/taxdb
 ```
@@ -259,7 +247,7 @@ For instance, let's say you wish to retain NanoCLUST's default settings but adju
 ```bash
 nextflow run programs/NanoCLUST/main.nf \ 
              -profile docker \ 
-             --reads sequencedata/concatenated_sequencedata/barcode1.fastq \ 
+             --reads sequencedata/concatenated_sequencedata/barcode1.fastq.gz \ 
              --db /user/programs/NanoCLUST/db/16S_ribosomal_RNA \ 
              --tax /user/programs/NanoCLUST/db/taxdb \
              --min_read_length 800
