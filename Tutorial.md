@@ -24,7 +24,7 @@ Let's kick things off by installing all the necessary programs NanoCLUST require
 # Installation
 ## Prerequisites
 
-NanoCLUST requires Nextflow and Docker or Conda. In this tutorial, we'll use Docker and install Nextflow via Conda. Since Docker is already used on our server, we only need to install Conda.
+NanoCLUST requires a Linux machine with Nextflow, Docker or Conda installed. In this tutorial, we'll use Docker and install Nextflow via Conda. Since Docker is already used on our server, we only need to install Conda.
 ### Installing Miniconda
 
 Conda is a program designed for managing packages, dependencies, and environments across various programming languages. In simple terms, it helps with the management of installed programs and ensures their compatibility.
