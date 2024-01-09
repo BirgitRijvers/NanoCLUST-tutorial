@@ -1,5 +1,5 @@
 #### Teacher
-Please make sure the soon to be users of NanoCLUST are added to the dockergroup on the server. This can be done by adding `docker` to the groups parameter when creating accounts, or by running `sudo usermod -aG docker $USER`. 
+Please make sure the soon to be users of NanoCLUST are added to the dockergroup on the server. This can be done by adding `docker` to the groups parameter when creating accounts, or by running `sudo usermod -aG docker [USER]`. 
 
 ---
 # Introduction
@@ -25,6 +25,7 @@ Let's kick things off by installing all the necessary programs NanoCLUST require
 ## Prerequisites
 
 NanoCLUST requires a Linux machine with Nextflow, Docker or Conda installed. In this tutorial, we'll use Docker and install Nextflow via Conda. Since Docker is already used on our server, we only need to install Conda.
+For installing docker, use the following [instructions](https://docs.docker.com/engine/install/ubuntu/) (you will need admin privileges)
 ### Installing Miniconda
 
 Conda is a program designed for managing packages, dependencies, and environments across various programming languages. In simple terms, it helps with the management of installed programs and ensures their compatibility.
@@ -36,18 +37,18 @@ First, we need to create a directory where Miniconda will be installed. It's rec
 **Tip:** Simply copy the command provided below and paste it into the terminal using your right mouse button. Note that 'CTRL + C/V' does not function within the terminal interface!
 
 ```bash
-mkdir ~/programs
+mkdir ~/programs/
 ```
 
 Navigate to the programs directory using this command:
 ```bash
-cd ~/programs
+cd ~/programs/
 ```
 
 Within the programs folder, create a directory specifically for Miniconda:
 
 ```bash
-mkdir -p miniconda3
+mkdir miniconda3/
 ```
 
 Next, download the Miniconda installer and start the installation:
@@ -57,16 +58,16 @@ Next, download the Miniconda installer and start the installation:
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda3/miniconda.sh
 bash miniconda3/miniconda.sh -b -u -p miniconda3
-rm -rf miniconda3/miniconda.sh
+rm miniconda3/miniconda.sh
 ```
 
-You will see some status information about the commands in your terminal, including progress bars. Just wait untill everything is finished, this should not take more than a few minutes.
-After executing the previous commands; you need to close the terminal and re-open it. This means you have to login again! 
-And again, we have to navigate to the right location using: 
+You will see some status information about the commands in your terminal, including progress bars. Just wait until everything is finished, this should not take more than a few minutes.
+
+After executing the previous commands; you need to reload the terminal:
 
 ```bash
-cd programs
-```
+source ~/.bashrc
+``` 
 
 Now we only need to initialize miniconda by running these commands:
 
@@ -91,9 +92,9 @@ Conda works with environments, allowing the installation of various programs in 
 conda create --name env_nf nextflow=22.10.6
 ```
 
-This command can take some time to complete as well, you'll see a turning / to indicate that things are happening.
+This command can take some time to complete as well, you'll see a rotating '/' to indicate that things are happening.
 
-When a question pops up ('Proceed ([y]/n)?'): Use the 'y' key on your keyboard to proceed. Just wait untill you see this message:
+When a question pops up ('Proceed ([y]/n)?'): Use the 'y' key and enter on your keyboard to proceed. Just wait until you see this message:
 
 ```bash
 #
@@ -111,6 +112,7 @@ To activate the environment; run:
 ```bash
 conda activate env_nf
 ```
+
 ---
 ## NanoCLUST
 ### Installation
@@ -125,15 +127,15 @@ git clone https://github.com/genomicsITER/NanoCLUST.git
 This command will fetch the necessary files and set up NanoCLUST in your chosen directory.
 
 ### Databases
-To classify our reads, NanoCLUST compares our data to two databases. As these databases are not included in the GitHub contents, we need to install them. We'll create the databases within the NanoCLUST directory. Start by changing your location to that directory using this command:
+To classify our reads, NanoCLUST compares our data against two databases. As these databases are not included in the GitHub contents, we need to install them. We'll create the databases within the NanoCLUST directory. Start by changing your location to that directory using this command:
 ```bash
-cd NanoCLUST
+cd NanoCLUST/
 ```
 Next, create a new directory where the databases will be placed, and change your location to the fresh directory:
 
 ```bash
-mkdir db
-cd db
+mkdir db/
+cd db/
 ```
 
 Download the first database using the following command:
@@ -141,16 +143,16 @@ Download the first database using the following command:
 ```bash
 wget https://ftp.ncbi.nlm.nih.gov/blast/db/16S_ribosomal_RNA.tar.gz && tar -xzvf 16S_ribosomal_RNA.tar.gz
 ```
-Wait untill the progress is completed!
+Wait until the progress is completed!
 
 NanoCLUST also requires a database containing taxonomic names for each of the numerical taxids it identifies. Create a new location for this database within the `db` directory, change your location to it, and download the database:
 
 ```bash
-mkdir taxdb
-cd taxdb
+mkdir taxdb/
+cd taxdb/
 wget https://ftp.ncbi.nlm.nih.gov/blast/db/taxdb.tar.gz && tar -xzvf taxdb.tar.gz
 ```
-Wait untill the progress is completed!
+Wait until the progress is completed!
 
 These commands will download and extract the necessary databases required by NanoCLUST.
 
@@ -160,6 +162,8 @@ Unfortunately, the NanoCLUST code doesn't work straight away, there is a little 
 ```bash
 cd ..
 cd ..
+# or do it in one command:
+cd ../../
 ```
 
 The line that we have to change is line 104; it originally contains:
@@ -171,6 +175,7 @@ There are multiple ways to do this, but let's use this command:
 ```bash
 sed -i "104s|withName: consensus_classification { container = 'hecrp/nanoclust-consensus_classification'|withName: consensus_classification { container = 'ncbi/blast:latest'|" nextflow.config
 ```
+
 ---
 # Testing
 Assuming all previous steps completed without issues, it's time to test NanoCLUST! The tool provides a built-in test profile for quick validation. Before running NanoCLUST, ensure you are in the correct Conda environment where Nextflow was installed: 'env_nf'. You can verify this by checking the first word displayed on your command line prompt. If it shows '(base)', activate the environment by running `conda activate env_nf`. If it displays '(env_nf)', you're all set!
@@ -218,8 +223,8 @@ Here's how the paths would look:
 
 - `{main.nf}`: `programs/NanoCLUST/main.nf`
 - `{'sample.fastq'}`: `sequencedata/concatenated_sequencedata/barcode1.fastq.gz`
-- `{"db/16S_ribosomal_RNA"}`: `/user/programs/NanoCLUST/db/16S_ribosomal_RNA`
-- `{"db/taxdb/"}`: `/user/programs/NanoCLUST/db/taxdb`
+- `{"db/16S_ribosomal_RNA"}`: `programs/NanoCLUST/db/16S_ribosomal_RNA`
+- `{"db/taxdb/"}`: `programs/NanoCLUST/db/taxdb`
 
 To run NanoCLUST based on this setup, the command would be:
 
@@ -287,6 +292,6 @@ A list of all NanoCLUST parameters you can adjust:
 --- 
 
 # Wrap up
-Congratulations, you've reached the end of the tutorial! By now, you've successfully installed NanoCLUST, are able to prepare your data and execute the pipeline. To explore the diverse outputs generated, againrefer to the [GitHub page of NanoCLUST](https://github.com/genomicsITER/NanoCLUST). 
+Congratulations, you've reached the end of the tutorial! By now, you've successfully installed NanoCLUST, are able to prepare your data and execute the pipeline. To explore the diverse outputs generated, please refer to the [GitHub page of NanoCLUST](https://github.com/genomicsITER/NanoCLUST). 
 
-I hope NanoCLUST comes in usefull for your projects, and that you feel more confident navigating the command line 😄!
+I hope NanoCLUST comes in useful for your projects, and that you feel more confident navigating the command line 😄!
